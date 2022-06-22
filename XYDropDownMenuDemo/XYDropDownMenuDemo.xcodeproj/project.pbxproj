@@ -92,11 +92,11 @@
 		642C1A542861C9E6007631D2 /* DemoView */ = {
 			isa = PBXGroup;
 			children = (
-				642C1A552861CB08007631D2 /* FilterDropModel.swift */,
-				642C1A4A2861C9D8007631D2 /* FilterDropCell.xib */,
+				642C1A4E2861C9D8007631D2 /* FilterDropView.swift */,
 				642C1A4B2861C9D8007631D2 /* FilterDropView.xib */,
 				642C1A4D2861C9D8007631D2 /* FilterDropCell.swift */,
-				642C1A4E2861C9D8007631D2 /* FilterDropView.swift */,
+				642C1A4A2861C9D8007631D2 /* FilterDropCell.xib */,
+				642C1A552861CB08007631D2 /* FilterDropModel.swift */,
 			);
 			path = DemoView;
 			sourceTree = "<group>";

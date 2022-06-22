@@ -10,11 +10,8 @@ import Foundation
 import UIKit
 
 enum FilterDropViewType {
-    case time // 时间排序
-    case most // 最高排序
-    case staff // 运营人员(多选)
-    case account // 账号(多选)
-    case placeStatus // 投放状态
+    case single // 单选
+    case multiple // 多选
 }
 
 class FilterDropView: UIView, XYDropMenuProtocol {
@@ -29,9 +26,9 @@ class FilterDropView: UIView, XYDropMenuProtocol {
     // 数据数组
     lazy var dataArray: [FilterDropModel] = (0..<6).map({_ in FilterDropModel()})
     
-    lazy var type: FilterDropViewType = .time {
+    lazy var type: FilterDropViewType = .single {
         didSet {
-            if type == .time || type == .most {
+            if type == .single {
                 // 一进来选中第一行
                 tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
                 isDefaultSelected = tableView.indexPathForSelectedRow != nil
@@ -63,14 +60,6 @@ extension FilterDropView : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataArray.count
     }
-//
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        0.1
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        0.1
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = FilterDropCell.cellForData(tableView, indexPath, dataArr: dataArray)
@@ -78,7 +67,6 @@ extension FilterDropView : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didSelectRowAt")
         
         guard dataArray.count > indexPath.row else {return}
         let model = dataArray[indexPath.row]

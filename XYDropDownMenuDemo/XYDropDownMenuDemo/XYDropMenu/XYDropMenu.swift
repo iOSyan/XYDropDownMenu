@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
+/// 如果需要默认选中，则需要遵守该协议
 protocol XYDropMenuProtocol: UIView {
     var isDefaultSelected: Bool { set get }
 }
@@ -18,8 +19,7 @@ class XYDropMenu: UIView {
     
     lazy var isOpened: Bool = false
     
-    // 必须要遵守XYDropMenuDefaultSelected协议的view才能当子view
-    var dropDownViews: [XYDropMenuProtocol]? {
+    var dropDownViews: [UIView]? {
         didSet {
             guard dropDownViews?.count == dropDownTitles?.count else {
                 fatalError("请确保 dropDownViews count 跟 dropDownTitles count数量一样")
@@ -51,6 +51,7 @@ class XYDropMenu: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 15
+        stackView.frame = bounds
         return stackView
     }()
     
@@ -167,7 +168,6 @@ private extension XYDropMenu {
     }
     
     func setupStackView() {
-        stackView.backgroundColor = .gray
         addSubview(stackView)
     }
     
@@ -187,10 +187,9 @@ private extension XYDropMenu {
 //            button.setupButtonImageAndTitlePossitionWith(padding: 5, style: .imageIsRight)
             button.setTitle(title, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button.setTitleColor(.lightGray, for: .normal)
-            button.setTitleColor(.blue, for: .selected)
+            button.setTitleColor(.black, for: .normal)
+            button.setTitleColor(.red, for: .selected)
             button.addTarget(self, action: #selector(titleBtnClick(sender:)), for: .touchUpInside)
-            button.backgroundColor = .yellow
             titleBtns?.append(button)
             isShowArr.append(false)
             stackView.addArrangedSubview(button)
@@ -211,9 +210,6 @@ private extension XYDropMenu {
     }
     
     func showDropView() {
-//        guard
-//            let selectedBtn = selectedBtn,
-//            let showingDropView = showingDropView else { return }
             
         guard let coverBgView = coverBgView, let showingDropView = showingDropView else {return}
         
@@ -222,7 +218,6 @@ private extension XYDropMenu {
         showingDropView.y = y + height
         showingDropView.height = 0
         superview?.addSubview(showingDropView)
-//        showingDropView.isHidden = false
         
         weak var weakSelf = self
         UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.9, options: []) {
@@ -239,7 +234,7 @@ private extension XYDropMenu {
         
         for index in 0..<dropDownViews.count {
             let view = dropDownViews[index]
-            if view.isDefaultSelected, let titleBtns = titleBtns {
+            if let view = view as? XYDropMenuProtocol, view.isDefaultSelected, let titleBtns = titleBtns {
                 let btn = titleBtns[index]
                 btn.isSelected = true
             }
