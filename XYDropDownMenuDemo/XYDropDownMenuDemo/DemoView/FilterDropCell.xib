@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FilterDropCell" rowHeight="55" id="0bh-Br-Ane" customClass="FilterDropCell" customModule="YiLiang" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bh-Br-Ane" id="qYj-sI-0Uf">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2f-Iy-HZP">
+                        <rect key="frame" x="20" y="17" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="ColorMainTextBlack"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="33j-o9-jx8">
+                        <rect key="frame" x="369" y="17.5" width="20" height="20"/>
+                        <color key="backgroundColor" name="ColorMainBlue"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="3HH-4w-OFp"/>
+                            <constraint firstAttribute="width" secondItem="33j-o9-jx8" secondAttribute="height" id="Nd5-tT-gfA"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="33j-o9-jx8" secondAttribute="trailing" constant="25" id="0UG-gG-alG"/>
+                    <constraint firstItem="33j-o9-jx8" firstAttribute="centerY" secondItem="qYj-sI-0Uf" secondAttribute="centerY" id="6oQ-aE-xUi"/>
+                    <constraint firstItem="M2f-Iy-HZP" firstAttribute="centerY" secondItem="qYj-sI-0Uf" secondAttribute="centerY" id="DBn-V6-a4O"/>
+                    <constraint firstItem="M2f-Iy-HZP" firstAttribute="leading" secondItem="qYj-sI-0Uf" secondAttribute="leading" constant="20" id="jmc-aP-6Qu"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkImgView" destination="33j-o9-jx8" id="5dW-gd-4Wa"/>
+                <outlet property="desLabel" destination="M2f-Iy-HZP" id="zgx-at-WRe"/>
+            </connections>
+            <point key="canvasLocation" x="289.85507246376812" y="91.40625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="ColorMainBlue">
+            <color red="0.2630000114440918" green="0.56499999761581421" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ColorMainTextBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
